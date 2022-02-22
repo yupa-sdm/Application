@@ -17,8 +17,9 @@ class _NewsPageState extends State<NewsPage> {
   List<ListoftemplesData> dataList = [];
 
   Future<String> _GatData() async {
-    var respones = await Http.get(
-        'https://numvarn.github.io/resume/asset/files/templeprofile.json');
+    var respones = await Http.get(Uri.parse(
+        'https://numvarn.github.io/resume/asset/files/templeprofile.json'));
+
     jsonData = json.decode(utf8.decode(respones.bodyBytes));
 
     for (var data in jsonData) {
