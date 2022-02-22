@@ -16,6 +16,7 @@ class _NewsPageState extends State<NewsPage> {
   var jsonData;
   List<ListoftemplesData> dataList = [];
 
+// ignore: non_constant_identifier_names
   Future<String> _GatData() async {
     var respones = await Http.get(Uri.parse(
         'https://numvarn.github.io/resume/asset/files/templeprofile.json'));
@@ -23,13 +24,8 @@ class _NewsPageState extends State<NewsPage> {
     jsonData = json.decode(utf8.decode(respones.bodyBytes));
 
     for (var data in jsonData) {
-      ListoftemplesData news = ListoftemplesData(
-          data['อันดับ'],
-          data['ชื่อ'],
-          data['พระเกจิ'],
-          data['รายละเอียด'],
-          data['ละติจูด'],
-          data['ลองติจูด']);
+      ListoftemplesData news = ListoftemplesData(data['ชื่อ'], data['พระเกจิ'],
+          data['รายละเอียด'], data['ละติจูด'], data['ลองติจูด']);
       dataList.add(news);
     }
     return 'ok';
@@ -53,16 +49,6 @@ class _NewsPageState extends State<NewsPage> {
                   return Container(
                     child: Column(
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.all(15),
-                          child: Align(
-                            child: Text(
-                              '${dataList[index].rating}',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
                         Container(
                           margin: EdgeInsets.all(15),
                           child: Align(
@@ -132,12 +118,11 @@ class _NewsPageState extends State<NewsPage> {
 }
 
 class ListoftemplesData {
-  String rating;
   String name;
   String monk;
   String detail;
   double latitude;
   double longtitude;
-  ListoftemplesData(this.rating, this.name, this.monk, this.detail,
-      this.latitude, this.longtitude);
+  ListoftemplesData(
+      this.name, this.monk, this.detail, this.latitude, this.longtitude);
 }

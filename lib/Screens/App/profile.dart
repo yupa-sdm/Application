@@ -77,4 +77,5 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
+// ignore: non_constant_identifier_names
 _GatNewsAPI() {}
