@@ -24,6 +24,7 @@ class _NewsPageState extends State<NewsPage> {
     for (var data in jsonData) {
       ListoftemplesData news = ListoftemplesData(
           data['อันดับ'],
+          data['ชื่อ'],
           data['พระเกจิ'],
           data['รายละเอียด'],
           data['ละติจูด'],
@@ -51,6 +52,26 @@ class _NewsPageState extends State<NewsPage> {
                   return Container(
                     child: Column(
                       children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.all(15),
+                          child: Align(
+                            child: Text(
+                              '${dataList[index].rating}',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(15),
+                          child: Align(
+                            child: Text(
+                              '${dataList[index].name}',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                         Container(
                           margin: EdgeInsets.all(15),
                           child: Align(
@@ -110,11 +131,12 @@ class _NewsPageState extends State<NewsPage> {
 }
 
 class ListoftemplesData {
+  String rating;
   String name;
   String monk;
   String detail;
   double latitude;
   double longtitude;
-  ListoftemplesData(
-      this.name, this.monk, this.detail, this.latitude, this.longtitude);
+  ListoftemplesData(this.rating, this.name, this.monk, this.detail,
+      this.latitude, this.longtitude);
 }
